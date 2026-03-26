@@ -69,6 +69,23 @@ Deployment:
 
 ---
 
+### Structure:
+algorithm-visualizer/
+│
+├── index.html
+├── style.css
+├── app.js
+│
+├── algorithms/
+│   ├── bubbleSort.js
+│   ├── selectionSort.js
+│   ├── insertionSort.js
+│   ├── mergeSort.js
+│   └── quickSort.js
+│
+└── visualizer/
+    └── renderBars.js
+
 ## 👤 Author
 
 Dabeet Sharma  

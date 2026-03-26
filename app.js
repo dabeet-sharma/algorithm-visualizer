@@ -1,6 +1,7 @@
 
 // Imports Bubble Sort function and bar drawing function
 import { bubbleSort } from "./algorithms/bubbleSort.js";
+import { selectionSort } from "./algorithms/selectionSort.js";
 import { renderBars } from "./visualizer/renderBars.js";
 
 // DOM element references
@@ -8,6 +9,7 @@ const barContainer = document.getElementById("barContainer");
 const generateBtn = document.getElementById("generateBtn");
 const startBtn = document.getElementById("startBtn");
 const speedRange = document.getElementById("speedRange");
+const algorithmSelect = document.getElementById("algorithmSelect");
 
 //  stores current array
 let array = [];
@@ -31,6 +33,25 @@ function resetArray() {
     renderBars(array, barContainer);
 }
 
+// Function to get selected algorithm by user
+    function getSelectedAlgorithm() {
+    const selected = algorithmSelect.value;
+    switch (selected) {
+        case "selection":
+            return selectionSort;
+        case "insertion":
+            return insertionSort;
+        case "merge":
+            return mergeSort;
+        case "quick":
+            return quickSort;
+        case "bubble":
+            return bubbleSort;
+        default:
+            return bubbleSort;
+    }
+}
+
 // Event listeners 
 generateBtn.addEventListener("click", resetArray);
 startBtn.addEventListener("click", async () => {
@@ -39,22 +60,29 @@ startBtn.addEventListener("click", async () => {
     isSorting = true;
     generateBtn.disabled = true;
     startBtn.disabled = true;
+    algorithmSelect.disabled = true;
+    speedRange.disabled = true; 
 
+    // Get speed and user choice of sort
     const speed = Number(speedRange.value);
+    const selectedSort = getSelectedAlgorithm();
+
 
     /**
-     * Run Bubble Sort and waits for it to finish.
-     * send current array into Bubble Sort
+     * Run selected sort and wait for it to finish.
+     * send current array into selected Sort
      * send bar container so it can redraw bars
      * send speed for animation delay
      * wait until sorting is fully done
      * store the sorted array back into array
      */
-    array = await bubbleSort(array, barContainer, speed);
+    array = await selectedSort(array, barContainer, speed);
 
+    isSorting = false;
     generateBtn.disabled = false;
     startBtn.disabled = false;
-    isSorting = false;
+    algorithmSelect.disabled = false;
+    speedRange.disabled = false; 
 });
 
 // create the first random array 

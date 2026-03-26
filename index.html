@@ -13,6 +13,15 @@
         </header>
 
         <section class="controls">
+            <label for="algorithmSelect">Algorithm</label>
+            <select id="algorithmSelect">
+                <option value="bubble">Bubble Sort</option>
+                <option value="selection">Selection Sort</option>
+                <option value="insertion">Insertion Sort</option>
+                <option value="merge">Merge Sort</option>
+                <option value="quick">Quick Sort</option>
+            </select>
+            
             <button id="generateBtn">
                 Generate New Array
             </button>
@@ -20,9 +29,9 @@
                 Start Sorting
             </button>
             <label for="speedRange">
-                Speed:   +
+                Fast
             </label>
-            <input type="range" id="speedRange" min="10" max="300" value="100" /> - 
+            <input type="range" id="speedRange" min="10" max="100" value="30" /> Slow 
         </section>
 
         <!-- Render Bars  -->
