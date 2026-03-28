@@ -3,6 +3,11 @@
 import { bubbleSort } from "./algorithms/bubbleSort.js";
 import { selectionSort } from "./algorithms/selectionSort.js";
 import { renderBars } from "./visualizer/renderBars.js";
+import { insertionSort } from "./algorithms/insertionSort.js";
+import { mergeSort } from "./algorithms/mergeSort.js";
+import { quickSort } from "./algorithms/quickSort.js";
+import { heapSort } from "./algorithms/heapSort.js";
+
 
 // DOM element references
 const barContainer = document.getElementById("barContainer");
@@ -45,6 +50,8 @@ function resetArray() {
             return mergeSort;
         case "quick":
             return quickSort;
+        case "heap":
+            return heapSort;
         case "bubble":
             return bubbleSort;
         default:
